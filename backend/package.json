@@ -2,9 +2,17 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/server.js"
+  },
+   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "~4.16.1",
+    "mongoose": "^5.13.5",
+    "nodemon": "^2.0.12"
   },
   "author": "",
   "license": "ISC"
