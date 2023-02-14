@@ -1,13 +1,12 @@
-import Express  from "express"
-import cores from "cors"
-import todoAppRoute from './routes/todoAppRoutes.js'
-const app = Express()
+import Express from "express";
+import cores from "cors";
+import registeredUser from "./routes/ecommerceRoutes.js";
+const app = Express();
 
-app.use(cores())
-app.use(Express.json())
+app.use(cores());
+app.use(Express.json());
 app.use(Express.urlencoded({ extended: false }));
 
-app.use('/',todoAppRoute)
+app.use("/", registeredUser);
 
-export default app
-
+export default app;
