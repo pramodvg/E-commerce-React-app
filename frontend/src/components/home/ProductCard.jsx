@@ -8,7 +8,7 @@ const ProductCard = ({ product }) => {
   };
   return (
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={product.image} onError={handleImageError}/>
+      <Card.Img variant="top" src={`http://localhost:8001/${product.image}`} onError={handleImageError}/>
       <Card.Body>
         <Card.Title>{product.productName}</Card.Title>
         <Card.Text>{product.description}</Card.Text>

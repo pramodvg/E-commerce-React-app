@@ -1,12 +1,26 @@
 import User from "../model/registration.js";
-
+import { upload } from "../utils/uploads.js"
 const registeredUser = async (req, res) => {
   try {
-    const user = new User(req.body);
-    const savedUser = await user.save();
-    res.status(200).send(savedUser);
+    // const user = new User(req.body);
+   await upload.single('image')(req, res, function (err) {
+      if (err) {
+        return res.status(400).send(`Error in registeredUser: ${err.message}`);
+      }
+
+      // Create new User instance and set file path in model
+      const user = new User({
+        userName: req.body.userName,
+        email: req.body.email,
+        image: req.file.filename
+      });
+
+      const savedUser = user.save();
+      res.status(200).send(savedUser);
+    });
+
   } catch (error) {
-    res.status(500).send(`Error in registeredUser: ${error.message}`);
+    res.status(500).send(`Error in registeredUser: ${error.message} => req is ${req.body.email}`);
   }
 };
 
