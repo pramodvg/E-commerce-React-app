@@ -1,9 +1,7 @@
 import Product from "../model/product.model.js";
 
 const addProducts = (req, res) => {
-  const product = new Product(req.body);
-  console.log(req.body);
-  product.save((err, data) => {
+  Product.insertMany(req.body, (err, data) => {
     if (err) {
       res.status(500).send(`Error in addProduct 500 ${err}`);
     } else {
