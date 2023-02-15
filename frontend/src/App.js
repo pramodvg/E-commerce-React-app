@@ -1,6 +1,5 @@
 import "./App.css";
-import BackendLogin from "./Components/BackendLogin";
-import Login from "./Components/Login";
+import Login from "./components/Login.jsx";
 
 function App() {
   return (

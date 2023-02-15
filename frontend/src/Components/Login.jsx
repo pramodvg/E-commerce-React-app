@@ -1,9 +1,10 @@
+import './Login.css'
 import React, { useEffect } from "react";
 import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
+
 const Login = () => {
-  const clientId =
-    "393197428000-rbjrbjf7k431k4ra52dvrivatpqr59bn.apps.googleusercontent.com";
+  const clientId =   "393197428000-rbjrbjf7k431k4ra52dvrivatpqr59bn.apps.googleusercontent.com";
   const onSuccess = (response) => {
     console.log("Login Success: currentUser:", response.profileObj);
   };
@@ -20,8 +21,10 @@ const Login = () => {
     });
   });
   return (
-    <div>
+    <div className='login-container'>
+      <h4>Login with Google</h4>
       <GoogleLogin
+      className="google-login"
         clientId={clientId}
         buttonText="Login with Google"
         onSuccess={onSuccess}
