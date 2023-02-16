@@ -3,9 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./components/login/Login.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/home/Home";
+import Navigation from './components/navigationBar/Navigation.jsx';
 function App() {
   return (
     <Router>
+      <Navigation/>
       <Routes>
         <Route exact path="/" element={<Login />} />
 

@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
     event.target.src = "/Photos/placeholder-image.png";
   };
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem" }} >
       <Card.Img variant="top" src={`http://localhost:8001/${product.image}`} onError={handleImageError}/>
       <Card.Body>
         <Card.Title>{product.productName}</Card.Title>

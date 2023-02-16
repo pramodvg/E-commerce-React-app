@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-const Navigation = ({ handleLogout }) => {
+const Navigation = () => {
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    navigate('/'); // Navigate to login page after logout
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
