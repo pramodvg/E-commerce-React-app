@@ -2,8 +2,21 @@ import User from "../model/registration.js";
 import { upload } from "../utils/uploads.js"
 const registeredUser = async (req, res) => {
   try {
-    // const user = new User(req.body);
-   await upload.single('image')(req, res, function (err) {
+    const { userName, email } = req.body;
+
+    if (!userName || !email) {
+      return res.status(400).send("Error in registeredUser: userName and email are required");
+    }
+
+    // Check if user already exists in the database
+    let user = await User.findOne({ email });
+
+    if (user) {
+      return res.status(200).send(user);
+    }
+
+    // If user does not exist, create a new one
+    await upload.single('image')(req, res, function (err) {
       if (err) {
         return res.status(400).send(`Error in registeredUser: ${err.message}`);
       }

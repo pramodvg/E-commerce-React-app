@@ -6,6 +6,7 @@ const addProducts = async (req, res) => {
       if (err) {
         return res.status(400).send(`Error in registeredUser: ${err.message}`);
       }
+
       // Get the product data from the request body
       const { productName, description, discount, price, category, countInStock, rating } = req.body;
 
@@ -21,8 +22,11 @@ const addProducts = async (req, res) => {
         rating
       });
 
-      const products = product.save(req.body);
-      res.status(200).send(products);
+      // const products = product.save();
+      setTimeout(() => {
+        res.status(200).send({});
+
+      }, 2000);
     });
 
   } catch (error) {
@@ -33,7 +37,9 @@ const addProducts = async (req, res) => {
 const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
-    res.status(200).send(products);
+    setTimeout(() => {
+      res.status(200).send(products);
+    }, 1000);
   } catch (error) {
     res.status(500).send(`Error in getProducts: ${error.message}`);
   }

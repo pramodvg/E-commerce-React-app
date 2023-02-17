@@ -1,28 +1,25 @@
-import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import useProducts from './useProducts';
+import Navigation from '../navigationBar/Navigation';
+import { Card } from 'semantic-ui-react';
 function Home() {
   const [loading, error, products] = useProducts();
-
-  if (loading) {
-    return <p>Loading..........</p>;
-  }
+  
   if (error) {
     return <p>Error 404</p>;
   }
-
   return (
     <div>
+      <Navigation />
       <div className="container my-4">
         <div className="row">
-          {products &&
-            products.map((data) => {
+          <Card.Group doubling itemsPerRow={4} stackable>
+            {products.map((data, index) => {
               return (
-                <div className=".col-lg-3 col-md-3 col-sm-6 col-12">
-                  <ProductCard product={data} />
-                </div>
+                <ProductCard product={data} loading={loading} key={index} />
               );
             })}
+          </Card.Group>
         </div>
       </div>
     </div>
