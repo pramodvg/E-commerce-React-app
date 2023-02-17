@@ -22,7 +22,7 @@ const addProducts = async (req, res) => {
         rating
       });
 
-      // const products = product.save();
+      const products = product.save();
       setTimeout(() => {
         res.status(200).send({});
 

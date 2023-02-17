@@ -6,6 +6,7 @@ const Navigation = () => {
   const navigate = useNavigate();
 
   function handleLogout() {
+    sessionStorage.setItem('isAuthenticated', null);
     navigate('/'); // Navigate to login page after logout
   }
   return (

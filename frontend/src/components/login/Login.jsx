@@ -7,6 +7,7 @@ const Login = () => {
    const navigate = useNavigate();
   const clientId =   "393197428000-rbjrbjf7k431k4ra52dvrivatpqr59bn.apps.googleusercontent.com";
   const onSuccess = (response) => {
+    sessionStorage.setItem('isAuthenticated', true);
     console.log("Login Success: currentUser:", response.profileObj);
       navigate("/home");
   };
