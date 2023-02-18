@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const navigate = useNavigate();
 
   function handleLogout() {
-    sessionStorage.setItem('isAuthenticated', null);
-    navigate('/'); // Navigate to login page after logout
+    localStorage.setItem("auth", null);
+    navigate("/login"); // Navigate to login page after logout
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand">
+        <Link to="/home" className="navbar-brand">
           My Store
         </Link>
         <button
@@ -29,7 +29,7 @@ const Navigation = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="/" className="nav-link">
+              <Link to="/home" className="nav-link">
                 Home
               </Link>
             </li>

@@ -1,13 +1,13 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 // import { Card, Button } from "react-bootstrap";
-import { Button, Card, Image, Placeholder } from 'semantic-ui-react';
+import { Button, Card, Image, Placeholder } from "semantic-ui-react";
 const ProductCard = ({ product, loading }) => {
-     const handleImageError = (event) => {
+  const handleImageError = (event) => {
     event.target.onerror = null;
     event.target.src = "/Photos/placeholder-image.png";
   };
   return (
-   
     <Card>
       {loading ? (
         <Placeholder>
@@ -44,27 +44,27 @@ const ProductCard = ({ product, loading }) => {
           </>
         )}
       </Card.Content>
-
-      <Card.Content extra>
-        <Button disabled={loading} primary>
-          Add To Cart
-        </Button>
-      </Card.Content>
+      <NavLink>
+        <Card.Content extra>
+          <Button disabled={loading} primary>
+            Add To Cart
+          </Button>
+        </Card.Content>
+      </NavLink>
     </Card>
   );
 };
 
 export default ProductCard;
 
-
- // <Card style={{ width: "18rem" }} >
-    //   <Card.Img variant="top" src={`http://localhost:8001/${product.image}`} onError={handleImageError}/>
-    //   <Card.Body>
-    //     <Card.Title>{product.productName}</Card.Title>
-    //     <Card.Text>{product.description}</Card.Text>
-    //     <Card.Text>Category: {product.category}</Card.Text>
-    //     <Card.Text>Price: {product.price}</Card.Text>
-    //     <Card.Text>Discount: {product.discount}%</Card.Text>
-    //     <Button variant="primary">Add to Cart</Button>
-    //   </Card.Body>
-    // </Card>
+// <Card style={{ width: "18rem" }} >
+//   <Card.Img variant="top" src={`http://localhost:8001/${product.image}`} onError={handleImageError}/>
+//   <Card.Body>
+//     <Card.Title>{product.productName}</Card.Title>
+//     <Card.Text>{product.description}</Card.Text>
+//     <Card.Text>Category: {product.category}</Card.Text>
+//     <Card.Text>Price: {product.price}</Card.Text>
+//     <Card.Text>Discount: {product.discount}%</Card.Text>
+//     <Button variant="primary">Add to Cart</Button>
+//   </Card.Body>
+// </Card>

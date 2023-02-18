@@ -1,13 +1,13 @@
-import ProductCard from './ProductCard';
-import useProducts from './useProducts';
-import Navigation from '../navigationBar/Navigation';
-import { Card } from 'semantic-ui-react';
+import ProductCard from "./ProductCard";
+import useProducts from "./useProducts";
+import Navigation from "../navigationBar/Navigation";
+import { Card } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 function Home() {
   const navigate = useNavigate();
-  !sessionStorage.getItem('isAuthenticated') && navigate('/');
+  !localStorage.getItem("auth") && navigate("/login");
   const [loading, error, products] = useProducts();
-  
+
   if (error) {
     return <p>Error 404</p>;
   }
