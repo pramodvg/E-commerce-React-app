@@ -1,13 +1,12 @@
 import React from "react";
 // import { Card, Button } from "react-bootstrap";
 import { Button, Card, Image, Placeholder } from 'semantic-ui-react';
-const ProductCard = ({ product, loading }) => {
-     const handleImageError = (event) => {
+const ProductCard = ({ product, loading, onClick }) => {
+  const handleImageError = (event) => {
     event.target.onerror = null;
-    event.target.src = "/Photos/placeholder-image.png";
+    event.target.src = '/Photos/placeholder-image.png';
   };
   return (
-   
     <Card>
       {loading ? (
         <Placeholder>
@@ -46,7 +45,7 @@ const ProductCard = ({ product, loading }) => {
       </Card.Content>
 
       <Card.Content extra>
-        <Button disabled={loading} primary>
+        <Button disabled={loading} primary onClick={() => onClick(product)}>
           Add To Cart
         </Button>
       </Card.Content>
