@@ -9,15 +9,13 @@ const Cart = () => {
   const [cart, setCart] = useState(JSON.parse(mcart || "[]"));
   // const cart = JSON.parse(mcart || "[]");
 
-  // useEffect(() => {
-  //   const storedCart = localStorage.getItem("cart");
-  //   const parsedCart = storedCart ? JSON.parse(storedCart) : [];
+  useEffect(() => {
 
-  //   if (cart.length > 0) {
-  //     const updatedCart = [...parsedCart, ...cart];
-  //     localStorage.setItem("cart", JSON.stringify(updatedCart));
-  //   }
-  // }, [cart]);
+    if (cart.length > 0) {
+      const updatedCart = [ ...cart];
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
+  }, [cart]);
   const removeFromCart = (product) => {
     console.log(product);
     setCart(cart.filter((item) => item._id !== product._id));
