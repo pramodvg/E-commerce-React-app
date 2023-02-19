@@ -1,15 +1,16 @@
-import './Login.css'
+import "./Login.css";
 import React, { useEffect } from "react";
 import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
 import { useNavigate } from "react-router-dom";
-const Login = () => {
-   const navigate = useNavigate();
-  const clientId =   "393197428000-rbjrbjf7k431k4ra52dvrivatpqr59bn.apps.googleusercontent.com";
+const Login = ({ setAuth }) => {
+  const navigate = useNavigate();
+  const clientId =
+    "393197428000-rbjrbjf7k431k4ra52dvrivatpqr59bn.apps.googleusercontent.com";
   const onSuccess = (response) => {
-    sessionStorage.setItem('isAuthenticated', true);
+    setAuth(response);
     console.log("Login Success: currentUser:", response.profileObj);
-      navigate("/home");
+    navigate("/home", { replace: true });
   };
 
   const onFailure = (response) => {
@@ -24,10 +25,10 @@ const Login = () => {
     });
   });
   return (
-    <div className='login-container'>
+    <div className="login-container">
       <h4>Login with Google</h4>
       <GoogleLogin
-      className="google-login"
+        className="google-login"
         clientId={clientId}
         buttonText="Login with Google"
         onSuccess={onSuccess}

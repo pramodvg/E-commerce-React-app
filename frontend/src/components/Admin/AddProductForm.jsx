@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import useAddProduct from './useAddProduct';
-import { Loader } from 'semantic-ui-react';
+import { useState } from "react";
+import useAddProduct from "./useAddProduct";
+import { Loader } from "semantic-ui-react";
 const AddProductForm = () => {
-  const [productName, setProductName] = useState('');
-  const [description, setDescription] = useState('');
+  const [productName, setProductName] = useState("");
+  const [description, setDescription] = useState("");
   const [discount, setDiscount] = useState(0);
   const [price, setPrice] = useState(0);
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
   const [rating, setRating] = useState(0);
   const [image, setImage] = useState(null);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [addProduct, loading, isSuccess] = useAddProduct();
 
@@ -26,7 +26,7 @@ const AddProductForm = () => {
       !rating ||
       !image
     ) {
-      setErrorMessage('Please fill in all fields and upload an image');
+      setErrorMessage("Please fill in all fields and upload an image");
       return;
     }
 
@@ -42,15 +42,15 @@ const AddProductForm = () => {
     });
 
     if (success) {
-      setProductName('');
-      setDescription('');
+      setProductName("");
+      setDescription("");
       setDiscount(0);
       setPrice(0);
-      setCategory('');
+      setCategory("");
       setCountInStock(0);
       setRating(0);
       setImage(null);
-      setErrorMessage('');
+      setErrorMessage("");
     }
   };
 
@@ -66,7 +66,7 @@ const AddProductForm = () => {
           <div className="alert alert-danger">{errorMessage}</div>
         )}
         {isSuccess && (
-          <div className="alert alert-success">{'Successfully Added...'}</div>
+          <div className="alert alert-success">{"Successfully Added..."}</div>
         )}
         <div className="form-group">
           <label htmlFor="productName">Product Name</label>

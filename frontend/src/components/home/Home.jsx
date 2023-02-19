@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 function Home() {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
-  !sessionStorage.getItem('isAuthenticated') && navigate('/');
+  !localStorage.getItem("auth") && navigate("/login");
   const [loading, error, products] = useProducts();
 
   const addToCart = (product) => {
