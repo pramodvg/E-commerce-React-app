@@ -31,8 +31,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Login setAuth={setAuth} />} />
-        <Route path="/login" element={<Login setAuth={setAuth} />} />
+        <Route path="/" element={<Login setAuth={setAuth} />} />
 
         <Route
           path="/home"
