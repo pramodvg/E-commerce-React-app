@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 // import { Card, Button } from "react-bootstrap";
 import { Button, Card, Image, Placeholder } from 'semantic-ui-react';
-const ProductCard = ({ product, loading, onClick }) => {
+const ProductCard = ({ product, loading, onClick, showAddToCartButton }) => {
   const handleImageError = (event) => {
     event.target.onerror = null;
     event.target.src = '/Photos/placeholder-image.png';
@@ -46,9 +46,9 @@ const ProductCard = ({ product, loading, onClick }) => {
       </Card.Content>
 
       <Card.Content extra>
-        <Button disabled={loading} primary onClick={() => onClick(product)}>
+       { showAddToCartButton && (<Button disabled={loading} primary onClick={() => onClick(product)}>
           Add To Cart
-        </Button>
+        </Button>)}
       </Card.Content>
     </Card>
   );

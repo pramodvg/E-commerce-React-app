@@ -1,18 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import useProducts from './useProducts';
 import Navigation from '../navigationBar/Navigation';
 import { Card } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
+
 function Home() {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
-  !localStorage.getItem("auth") && navigate("/login");
+  !localStorage.getItem('auth') && navigate('/login');
   const [loading, error, products] = useProducts();
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart');
+    const parsedCart = storedCart ? JSON.parse(storedCart) : [];
+
+    if (cart.length > 0) {
+      const updatedCart = [...parsedCart, ...cart];
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+    }
+  }, [cart]);
 
   const addToCart = (product) => {
     setCart([...cart, product]);
-    console.log(JSON.stringify([...cart, product]));
   };
 
   if (error) {
@@ -31,6 +41,7 @@ function Home() {
                   loading={loading}
                   key={index}
                   onClick={addToCart}
+                  showAddToCartButton={true}
                 />
               );
             })}

@@ -1,13 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
   const navigate = useNavigate();
 
   function handleLogout() {
-    localStorage.setItem("auth", null);
-    navigate("/login"); // Navigate to login page after logout
+    localStorage.setItem('auth', JSON.stringify(false));
+    console.log(localStorage.getItem('auth'));
+    navigate('/login'); // Navigate to login page after logout
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

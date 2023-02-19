@@ -3,13 +3,13 @@ import React, { useEffect } from "react";
 import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
 import { useNavigate } from "react-router-dom";
-const Login = ({ setAuth }) => {
+const Login = () => {
   const navigate = useNavigate();
   const clientId =
     "393197428000-rbjrbjf7k431k4ra52dvrivatpqr59bn.apps.googleusercontent.com";
   const onSuccess = (response) => {
-    setAuth(response);
     console.log("Login Success: currentUser:", response.profileObj);
+    localStorage.setItem('auth', JSON.stringify(true));
     navigate("/home", { replace: true });
   };
 
