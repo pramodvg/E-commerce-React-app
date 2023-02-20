@@ -1,19 +1,16 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-// import { Card, Button } from "react-bootstrap";
-import { Button, Card, Image, Placeholder } from "semantic-ui-react";
+import React from 'react';
+import { Button, Card, Image, Placeholder } from 'semantic-ui-react';
 
 const ProductCard = ({
   product,
   loading,
   onClick,
   showAddToCartButton,
-  showRemoveToCartButton,
   removeProduct,
 }) => {
   const handleImageError = (event) => {
     event.target.onerror = null;
-    event.target.src = "/Photos/placeholder-image.png";
+    event.target.src = '/Photos/placeholder-image.png';
   };
   return (
     <Card>
@@ -53,15 +50,12 @@ const ProductCard = ({
         )}
       </Card.Content>
 
-      <Card.Content extra>
-        {showAddToCartButton && (
+      <Card.Content textAlign="center" extra>
+        {showAddToCartButton ? (
           <Button disabled={loading} primary onClick={() => onClick(product)}>
             Add To Cart
           </Button>
-        )}
-      </Card.Content>
-      <Card.Content extra>
-        {showRemoveToCartButton && (
+        ) : (
           <Button
             disabled={loading}
             primary
@@ -76,15 +70,3 @@ const ProductCard = ({
 };
 
 export default ProductCard;
-
-// <Card style={{ width: "18rem" }} >
-//   <Card.Img variant="top" src={`http://localhost:8001/${product.image}`} onError={handleImageError}/>
-//   <Card.Body>
-//     <Card.Title>{product.productName}</Card.Title>
-//     <Card.Text>{product.description}</Card.Text>
-//     <Card.Text>Category: {product.category}</Card.Text>
-//     <Card.Text>Price: {product.price}</Card.Text>
-//     <Card.Text>Discount: {product.discount}%</Card.Text>
-//     <Button variant="primary">Add to Cart</Button>
-//   </Card.Body>
-// </Card>

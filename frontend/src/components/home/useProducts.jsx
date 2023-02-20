@@ -9,11 +9,12 @@ function useProducts() {
   );
   const fetchData = async () => {
     setLoading(true);
-    axios
+    await axios
       .get('/products')
       .then((data) => setProducts(data.data))
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
+    products.length<=0 && setError('no product found');
   };
   useEffect(() => {
     fetchData();

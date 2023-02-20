@@ -1,33 +1,22 @@
-import { useState, useEffect } from "react";
-import ProductCard from "./ProductCard";
-import useProducts from "./useProducts";
-import Navigation from "../navigationBar/Navigation";
-import { Card } from "semantic-ui-react";
-import { useNavigate } from "react-router-dom";
-
+import { useEffect, useContext } from 'react';
+import ProductCard from './ProductCard';
+import useProducts from './useProducts';
+import Navigation from '../navigationBar/Navigation';
+import { Card } from 'semantic-ui-react';
+import { useNavigate } from 'react-router-dom';
+import cartItemsContext from '../UserContext';
 function Home() {
-  const [cart, setCart] = useState([]);
+   const [cart, setCart] = useContext(cartItemsContext);
   const navigate = useNavigate();
-  !localStorage.getItem("auth") && navigate("/login");
+  !localStorage.getItem('auth') && navigate('/login');
   const [loading, error, products] = useProducts();
 
-  useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    const parsedCart = storedCart ? JSON.parse(storedCart) : [];
-
-    if (cart.length > 0) {
-      const updatedCart = [...parsedCart, ...cart];
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-    }
-  }, [cart]);
-
   const addToCart = (product) => {
-    console.log(product);
-    setCart([...cart, product]);
+    setCart([...cart,product]);
   };
 
   if (error) {
-    return <p>Error 404</p>;
+    return <p>{error}</p>;
   }
   return (
     <div>
