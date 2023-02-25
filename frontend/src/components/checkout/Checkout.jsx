@@ -14,7 +14,7 @@ const Checkout = () => {
         <Navigation />
       </div>
       <div className="container col-md-6 mt-5">
-        <CartSummery cartItems={cart} clearCart={clearCart} />
+        <CartSummery cartItems={cart} clearCart={clearCart} page="checkout" />
       </div>
     </>
   );

@@ -16,8 +16,8 @@ function App() {
     <cartItemsContext.Provider value={[cart, setCart]}>
       <Router>
         <Routes>
-          <Route path="/login" element={<Login />} />
           <Route exact path="/" element={<AuthRoute />}>
+            <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />

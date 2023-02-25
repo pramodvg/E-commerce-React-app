@@ -1,7 +1,7 @@
 import React from "react";
 import { Divider, Segment, Card, Icon, Button, Label } from "semantic-ui-react";
 import { useNavigate, useParams } from "react-router-dom";
-const CartSummery = ({ cartItems, clearCart }) => {
+const CartSummery = ({ cartItems, clearCart, page }) => {
   const totalPrice = cartItems.reduce((acc, cur) => acc + cur.price, 0);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -44,7 +44,7 @@ const CartSummery = ({ cartItems, clearCart }) => {
         </Segment>
       </Card.Content>
 
-      {{ id } === "cart" ? (
+      {page === "cart" ? (
         <Card.Content className="ui fluid button" textAlign="center">
           <Button
             primary

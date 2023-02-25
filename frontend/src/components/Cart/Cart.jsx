@@ -1,15 +1,15 @@
-import React, {useContext } from 'react';
-import Navigation from '../navigationBar/Navigation';
-import { Card } from 'semantic-ui-react';
-import ProductCard from '../home/ProductCard';
-import CartSummery from './CartSummery';
-import cartItemsContext from '../UserContext';
+import React, { useContext } from "react";
+import Navigation from "../navigationBar/Navigation";
+import { Card } from "semantic-ui-react";
+import ProductCard from "../home/ProductCard";
+import CartSummery from "./CartSummery";
+import cartItemsContext from "../UserContext";
 const Cart = () => {
   const [cart, setCart] = useContext(cartItemsContext);
-  
+
   // const mcart = localStorage.getItem('cart');
   // console.log(JSON.stringify(mcart));
- // const [cart, setCart] = useState(JSON.parse(mcart || '[]'));
+  // const [cart, setCart] = useState(JSON.parse(mcart || '[]'));
 
   // useEffect(() => {
   //   if (cart.length > 0) {
@@ -17,9 +17,9 @@ const Cart = () => {
   //     localStorage.setItem('cart', JSON.stringify(updatedCart));
   //   }
   // }, [cart]);
-    const clearCart = () => {
-      setCart([]);
-    };
+  const clearCart = () => {
+    setCart([]);
+  };
   const removeFromCart = (product) => {
     setCart(cart.filter((item) => item._id !== product._id));
   };
@@ -43,7 +43,7 @@ const Cart = () => {
             </Card.Group>
           </div>
           <div class="col-4">
-            <CartSummery cartItems={cart} clearCart={clearCart} />
+            <CartSummery cartItems={cart} clearCart={clearCart} page="cart" />
           </div>
         </div>
       </div>
