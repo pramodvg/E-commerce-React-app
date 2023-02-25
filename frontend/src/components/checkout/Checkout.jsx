@@ -1,15 +1,20 @@
 import React from "react";
 import Navigation from "../navigationBar/Navigation";
+import CartSummery from "../Cart/CartSummery";
+import cartItemsContext from "../UserContext";
+import { useContext } from "react";
 const Checkout = () => {
+  const [cart, setCart] = useContext(cartItemsContext);
+  const clearCart = () => {
+    setCart([]);
+  };
   return (
     <>
-      <Navigation />
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8">
-            <h1>Checkout</h1>
-          </div>
-        </div>
+      <div>
+        <Navigation />
+      </div>
+      <div className="container col-md-6 mt-5">
+        <CartSummery cartItems={cart} clearCart={clearCart} />
       </div>
     </>
   );

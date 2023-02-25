@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, Card, Image, Placeholder } from 'semantic-ui-react';
+import React from "react";
+import { Button, Card, Image, Placeholder } from "semantic-ui-react";
 
 const ProductCard = ({
   product,
@@ -10,7 +10,7 @@ const ProductCard = ({
 }) => {
   const handleImageError = (event) => {
     event.target.onerror = null;
-    event.target.src = '/Photos/placeholder-image.png';
+    event.target.src = "/Photos/placeholder-image.png";
   };
   return (
     <Card>

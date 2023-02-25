@@ -1,8 +1,11 @@
-import React from 'react';
-import { Divider, Segment, Card, Icon, Button, Label } from 'semantic-ui-react';
-
+import React from "react";
+import { Divider, Segment, Card, Icon, Button, Label } from "semantic-ui-react";
+import { useNavigate, useParams } from "react-router-dom";
 const CartSummery = ({ cartItems, clearCart }) => {
   const totalPrice = cartItems.reduce((acc, cur) => acc + cur.price, 0);
+  const navigate = useNavigate();
+  const { id } = useParams();
+
   return (
     <Card>
       <Segment>
@@ -12,7 +15,7 @@ const CartSummery = ({ cartItems, clearCart }) => {
         Your Cart Summery
       </Segment>
       <Card.Content>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Icon name="cart" />
           {cartItems.length} Items
         </div>
@@ -21,7 +24,7 @@ const CartSummery = ({ cartItems, clearCart }) => {
             return (
               <>
                 <div
-                  style={{ display: 'flex', justifyContent: 'space-between' }}
+                  style={{ display: "flex", justifyContent: "space-between" }}
                 >
                   {data.productName}
                   <p>{data.price}</p>
@@ -32,21 +35,32 @@ const CartSummery = ({ cartItems, clearCart }) => {
           })}
         </Segment>
       </Card.Content>
-
       <Card.Content extra>
         <Segment>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Icon name="dollar" />
             <strong>${Math.round(totalPrice)} Total</strong>
           </div>
         </Segment>
       </Card.Content>
-      <Card.Content className="ui fluid button" textAlign="center">
-        <Button primary>
-          <Icon name="cart" />
-          Check Out
-        </Button>
-      </Card.Content>
+
+      {{ id } === "cart" ? (
+        <Card.Content className="ui fluid button" textAlign="center">
+          <Button
+            primary
+            onClick={() => {
+              navigate("/checkout");
+            }}
+          >
+            <Icon name="cart" />
+            Check Out
+          </Button>
+        </Card.Content>
+      ) : (
+        <Card.Content className="ui fluid button" textAlign="center">
+          <Button primary>Pay Now</Button>
+        </Card.Content>
+      )}
     </Card>
   );
 };
