@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider, Segment, Card, Icon, Button, Label } from "semantic-ui-react";
+import { Divider, Segment, Card, Icon, Button } from "semantic-ui-react";
 import { useNavigate, useParams } from "react-router-dom";
 const CartSummery = ({ cartItems, clearCart, page }) => {
   const totalPrice = cartItems.reduce((acc, cur) => acc + cur.price, 0);
