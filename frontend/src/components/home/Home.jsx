@@ -1,18 +1,18 @@
-import { useEffect, useContext } from 'react';
-import ProductCard from './ProductCard';
-import useProducts from './useProducts';
-import Navigation from '../navigationBar/Navigation';
-import { Card } from 'semantic-ui-react';
-import { useNavigate } from 'react-router-dom';
-import cartItemsContext from '../UserContext';
+import { useEffect, useContext } from "react";
+import ProductCard from "./ProductCard";
+import useProducts from "./useProducts";
+import Navigation from "../navigationBar/Navigation";
+import { Card } from "semantic-ui-react";
+import { useNavigate } from "react-router-dom";
+import cartItemsContext from "../UserContext";
 function Home() {
-   const [cart, setCart] = useContext(cartItemsContext);
+  const [cart, setCart] = useContext(cartItemsContext);
   const navigate = useNavigate();
-  !localStorage.getItem('auth') && navigate('/login');
+  !localStorage.getItem("auth") && navigate("/login");
   const [loading, error, products] = useProducts();
 
   const addToCart = (product) => {
-    setCart([...cart,product]);
+    setCart([...cart, product]);
   };
 
   if (error) {
@@ -21,7 +21,10 @@ function Home() {
   return (
     <div>
       <Navigation />
-      <div className="container my-4">
+      <br />
+      <br />
+      <h1 className="text-center mt-5">Products</h1>
+      <div className="container mt-5">
         <div className="row">
           <Card.Group doubling itemsPerRow={4} stackable>
             {products.map((data, index) => {
